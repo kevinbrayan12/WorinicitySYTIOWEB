@@ -1,75 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Worinicity - Juego Épico</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Worinicity</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Press Start 2P', cursive;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      background-image: url('img/bg-stars.gif');
-      background-size: cover;
-      background-position: center;
+      background: black;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
-    h1 {
-      font-size: 3em;
-      margin-top: 60px;
-      color: #00ffcc;
-      text-shadow: 2px 2px 8px #00ffff;
+    #gameCanvas {
+      display: block;
+      margin: 0 auto;
+      background: #000;
+      touch-action: none;
     }
 
-    p {
-      font-size: 1.2em;
-      margin: 20px;
+    #controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 10;
     }
 
-    .play-button {
-      background-color: #00ffcc;
-      color: #000;
-      padding: 20px 40px;
-      font-size: 1.2em;
-      font-weight: bold;
+    .btn {
+      padding: 15px 20px;
+      font-size: 18px;
+      border-radius: 12px;
       border: none;
-      border-radius: 20px;
+      background-color: #1abc9c;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       cursor: pointer;
-      box-shadow: 0 0 15px #00ffff;
-      transition: transform 0.2s ease, background-color 0.3s;
     }
 
-    .play-button:hover {
-      background-color: #00ffff;
-      transform: scale(1.1);
+    .btn:active {
+      transform: scale(0.95);
     }
 
-    .footer {
-      margin-top: 50px;
-      font-size: 0.8em;
-      color: #aaa;
+    @media (max-width: 600px) {
+      .btn {
+        font-size: 16px;
+        padding: 12px 18px;
+      }
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
   </style>
 </head>
 <body>
-  <h1>🌍 WORINICITY 🌍</h1>
-  <p>
-    ¡Bienvenido a un viaje épico desde la creación de la Tierra hasta el dominio de los dinosaurios!<br />
-    Sobrevive, evoluciona y alcanza la gloria en este juego único.
-    ¡GANA asta 1SOL¡
-  </p>
-  <a href="https://kevinbrayan12.github.io/Worinicity/">
-    <button class="play-button">🎮 JUGAR AHORA</button>
-  </a>
+  <canvas id="gameCanvas" width="500" height="400"></canvas>
 
-  <div class="footer">
-    © 2025 Kevin Brayan - Todos los derechos reservados<br />
-    Sígueme en TikTok como <strong>@agentek9</strong>
+  <!-- Controles móviles -->
+  <div id="controls">
+    <button class="btn" id="jumpBtn">SALTAR</button>
+    <button class="btn" id="restartBtn" style="display:none;">REINICIAR</button>
   </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
-
